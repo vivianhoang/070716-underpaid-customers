@@ -19,8 +19,15 @@ def incorrect_pay(path):
 
         actual_cost = melon_cost*quantity  # finding actual cost per customer
 
-        if actual_cost != actual_pay:  # comparing actual cost and actual customer pay
+        if actual_cost > actual_pay:  # comparing actual cost and actual customer pay
             print name, "paid {:.2f}, actually expected {:.2f}".format(actual_pay, actual_cost)
+            print name, "has underpaid for their melons."
 
+        elif actual_cost < actual_pay:
+            print name, "paid {:.2f}, actually expected {:.2f}".format(actual_pay, actual_cost)
+            print name, "has overpaid for their melons."
+
+        else:
+            print "Every customer paid the correct total for their melons."
 
 incorrect_pay('customer-orders.txt')  # calling function
