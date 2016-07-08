@@ -65,10 +65,13 @@ def incorrect_pay(path):
         new_words = words[1:]
 
         name, quantity, actual_pay = new_words
+        quantity = int(quantity)
+        actual_pay = float(actual_pay)
 
         actual_cost = melon_cost*quantity
 
         if actual_cost != actual_pay:
-            print name, "paid {.2f}, expected {:.2f}".format(quantity, actual_pay)
+            print name, "paid {:.2f}, actually expected {:.2f}".format(actual_pay, actual_cost)
+
 
 incorrect_pay('customer-orders.txt')
