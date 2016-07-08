@@ -14,20 +14,20 @@ def incorrect_pay(path):
         new_words = words[1:]  # customer number was unnecessary, so skipped
 
         name, quantity, actual_pay = new_words  # unpacking the list into variables
-        quantity = int(quantity)  # converting list items into integers/floats
+        first_name = name.split(' ')[0]
+        quantity = float(quantity)  # converting list items into integers/floats
         actual_pay = float(actual_pay)
 
         actual_cost = melon_cost*quantity  # finding actual cost per customer
 
         if actual_cost > actual_pay:  # comparing actual cost and actual customer pay
-            print name, "paid {:.2f}, actually expected {:.2f}".format(actual_pay, actual_cost)
-            print name, "has underpaid for their melons."
+            print name, "paid ${:.2f}, expected ${:.2f}".format(actual_pay, actual_cost)
+            print first_name, "has underpaid for their melons."
 
         elif actual_cost < actual_pay:
-            print name, "paid {:.2f}, actually expected {:.2f}".format(actual_pay, actual_cost)
-            print name, "has overpaid for their melons."
+            print name, "paid ${:.2f}, expected ${:.2f}".format(actual_pay, actual_cost)
+            print first_name, "has overpaid for their melons."
 
-        else:
-            print "Every customer paid the correct total for their melons."
+    melon_file.close()
 
 incorrect_pay('customer-orders.txt')  # calling function
